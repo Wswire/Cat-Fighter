@@ -16,7 +16,7 @@ public class HighScore : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Score.scoreValue > highScoreValue)
+        if (Score.scoreValue > highScoreValue)              // sets new high score
         {
             highScoreValue = Score.scoreValue;
         }

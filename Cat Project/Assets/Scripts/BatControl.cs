@@ -22,7 +22,7 @@ public class BatControl : MonoBehaviour {
 
     public PlayerStatistics batStatistics = new PlayerStatistics();
 
-    public int fallBoundry = -20;
+    public int fallBoundry = -20;        // Destroys things that fall out of screen
 
     private void Awake()
     {
@@ -35,11 +35,11 @@ public class BatControl : MonoBehaviour {
         if (GameObject.Find("Player") != null)
             player = GameObject.Find("Player");
         else
-            player = GameObject.Find("Player(Clone)");
+            player = GameObject.Find("Player(Clone)");       // after the original 'player' dies it comes back as player(clone), this is to find it with the new name
 
         if (relayPoint == null)
         {
-            relayPoint = GameObject.Find("SpawnPoint (bat)").transform;
+            relayPoint = GameObject.Find("SpawnPoint (bat)").transform;       // bat spawn point
         }
         
     }
@@ -49,7 +49,7 @@ public class BatControl : MonoBehaviour {
 
         if (transform.position.y <= fallBoundry)
         {
-            DamagePlayer(999999999);
+            DamagePlayer(999999999);             // to make sure the game object dies when out of bounds
         }
 
         if (player != null)
@@ -62,22 +62,22 @@ public class BatControl : MonoBehaviour {
             else
             {
                 sr.flipX = false;
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * moveSpeed);
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * moveSpeed);       // this if...then statement to make the bat face in the direction it is moving
             }
         }else
         {
-            transform.position = Vector3.MoveTowards(transform.position, relayPoint.position, Time.deltaTime * moveSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, relayPoint.position, Time.deltaTime * moveSpeed);              // if the player dies they go back to spawnpoint 1
         }
 
         Start();
 
         if(Score.scoreValue == 100)
         {
-            OnBossInstance();
+            OnBossInstance();                // for future, in case of a boss
         }
     }
 
-    public void DamagePlayer(int damage)
+    public void DamagePlayer(int damage)      // damages bat, destroys it and adds to game score counter
     {
         Debug.Log("damage");
         batStatistics.Health -= damage;
@@ -93,7 +93,7 @@ public class BatControl : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)          // collision of flame projectile and bat
     {
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "flame")
@@ -105,7 +105,7 @@ public class BatControl : MonoBehaviour {
 
     public void OnBossInstance()
     {
-        for (int i =0 ; i< GameObject.FindGameObjectsWithTag("bat").Length; i++)
+        for (int i =0 ; i< GameObject.FindGameObjectsWithTag("bat").Length; i++)           //  for future... destroy all bats when boss encounter starts
         {
             Destroy(GameObject.FindGameObjectsWithTag("bat")[i]);
         }

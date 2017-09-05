@@ -7,7 +7,7 @@ public class PlayersStats : MonoBehaviour {
     [System.Serializable]
     public class PlayerStatistics
     {
-        public int Health = 1;
+        public int Health = 1;              // health of game object
     }
 
     public PlayerStatistics playerStatistics = new PlayerStatistics();
@@ -22,7 +22,7 @@ public class PlayersStats : MonoBehaviour {
         }
     }
 
-    public void DamagePlayer(int damage)
+    public void DamagePlayer(int damage)         // kills if less than or equal to 0 health
     {
         playerStatistics.Health -= damage;
         if (playerStatistics.Health <= 0)
@@ -31,7 +31,7 @@ public class PlayersStats : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)          // player bat collision, player dies
     {
         if (collision.gameObject.tag == "bat")
         {

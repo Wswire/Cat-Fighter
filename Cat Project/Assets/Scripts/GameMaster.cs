@@ -28,7 +28,7 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
-    public IEnumerator RespawnPlayer()
+    public IEnumerator RespawnPlayer()         // respwn player with delay
     {
         yield return new WaitForSeconds(spawnDelay);
         if (GameObject.Find("Player(Clone)") == null)
@@ -37,7 +37,7 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
-    public static void KillPlayer(PlayersStats player)
+    public static void KillPlayer(PlayersStats player)          // kill player, resets score
     {
         Destroy(player.gameObject);
         Score.scoreValue = 0;
@@ -46,7 +46,7 @@ public class GameMaster : MonoBehaviour {
     }
 
 
-    public IEnumerator RespawnBat()
+    public IEnumerator RespawnBat()           // respawns bats, every 5 bats killled a new spawn point is made......this ramps up really fast
     {
         yield return new WaitForSeconds(spawnDelayBat);
         switch (Score.scoreValue/5)
@@ -79,13 +79,13 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
-    public static void KillPlayer(BatControl player)
+    public static void KillPlayer(BatControl player)         // kill bat (bad naming tbh) 
     {
         Destroy(player.gameObject);
         gm.StartCoroutine(gm.RespawnBat());
     }
 
-    public void bossMode()
+    public void bossMode()            // for future
     {
        
     }

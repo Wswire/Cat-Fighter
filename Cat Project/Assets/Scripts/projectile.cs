@@ -21,7 +21,7 @@ public class projectile : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && canShoot)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && canShoot)          // flame projectile size, speed etc.
         {
 
             GameObject go = (GameObject)Instantiate(projectile1, (Vector2)transform.position + offset * transform.localScale.x, Quaternion.identity);
@@ -36,7 +36,7 @@ public class projectile : MonoBehaviour
     }
 
 
-    IEnumerator CanShoot()
+    IEnumerator CanShoot()           // cooldown between shots
     {
         canShoot = false;
         yield return new WaitForSeconds(cooldown);

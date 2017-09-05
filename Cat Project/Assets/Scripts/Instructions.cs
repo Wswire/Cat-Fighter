@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class Instructions : MonoBehaviour {
 
     Text instructions;
-    int timer = 350;
+    int timer = 350;             // counts game ticks
 
 	// Use this for initialization
 	void Start () {
         instructions = GetComponent<Text>();
-        instructions.text = "Use the arrow keys to move and left ctrl to shoot fire. Burn the bats that are attacking you and the beautiful forest!";
+        instructions.text = "Use the arrow keys to move and left ctrl to shoot fire. Burn the bats that are attacking you and the beautiful forest!";       // initial message on start
 	}
 	
 	// Update is called once per frame
