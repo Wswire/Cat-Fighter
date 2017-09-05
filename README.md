@@ -1,2 +1,2 @@
 # Cat-Fighter
-An in-progress arcade game!
+An in-progress arcade game made in Unity!
